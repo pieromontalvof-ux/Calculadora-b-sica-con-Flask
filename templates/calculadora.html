@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+.contenedor{
+    width: 520px;
+    margin: 70px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    margin-bottom: 30px;
+}
+
+input, select, button{
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+button{
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.resultado{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Quitar flechas en Chrome, Edge y Safari */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Quitar flechas en Firefox */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+</style>
+
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Calculadora</h2>
+
+    <form action="/calcular" method="POST">
+        <input type="number" name="num1" placeholder="Número 1" required>
+        <input type="number" name="num2" placeholder="Número 2" required>
+
+        <select name="operacion">
+            <option value="sumar">Sumar</option>
+            <option value="restar">Restar</option>
+            <option value="multiplicar">Multiplicar</option>
+            <option value="dividir">Dividir</option>
+        </select>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if resultado %}
+        <div class="resultado">
+            {{ resultado }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
